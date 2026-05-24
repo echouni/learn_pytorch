@@ -23,6 +23,7 @@ datasets/
 runs/
 logs/
 checkpoints/
+dataloader/
 *.pt
 *.pth
 *.ckpt
