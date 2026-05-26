@@ -48,6 +48,7 @@ writer = SummaryWriter("logs/")
 for i in range(epoch):
     print(f"第{i+1}轮训练开始了 ")
     # 训练步骤开始
+    model.train()
     for data in train_dataloader:
         imgs, targets =data
         outputs = model(imgs)
@@ -64,6 +65,7 @@ for i in range(epoch):
             writer.add_scalar("train_loss",loss.item(),train_num)
 
     #测试步骤
+    model.eval()
     total_test_loss = 0
     with torch.no_grad():
         for data in test_dataloader:
@@ -82,6 +84,7 @@ for i in range(epoch):
 
     torch.save(model,"model_{}.pth".format(i))
     print("模型已保存")
+    
 writer.close()
 
 
